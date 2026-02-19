@@ -1,0 +1,55 @@
+.howwework{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.howwework-container{
+    width: 90%;
+}
+.howwework-container h1{
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+
+}.howwework-container h5{
+    margin-top: 10px;
+    line-height: 20px;
+    text-align: center;
+}
+.howwework-content{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 30px;
+}
+.work .top{
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    gap: 30px;
+}
+.hr{
+    min-width: 150px;
+    margin-top: 30px;
+    border: 2px solid #009dff !important;
+}
+.sl{
+    color: #009dff;
+    font-size: 60px;
+}
+.bottom{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+@media (max-width:550px) {
+    .howwework-content{
+        flex-direction: column;
+    }
+    .howwework-content .hr{
+        display: none;
+    }
+}

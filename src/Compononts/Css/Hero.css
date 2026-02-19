@@ -1,0 +1,136 @@
+.hero{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(252, 252, 242);
+    
+}
+.hero-container{
+    width: 97%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-container .bg{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.bg img{
+    width: 100%;
+}
+.nav{
+    display: flex;
+    position: absolute;
+    width: 96%;
+    color: white;
+    align-items: center;
+    justify-content:space-between;
+    top: 20px;
+    z-index: 3;
+    height: fit-content;
+}
+.nav-middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 20px;
+    background-color: rgba(52, 52, 52, 0.188);
+    border: 1px solid rgba(0, 0, 0, 0.268);
+    height: 40px;
+}
+.nav-middle h5{
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.nav-right h5{
+    padding: 10px 30px;
+    background-color: rgb(153, 218, 54);
+    border-radius: 20px;
+    font-size: 12px;
+}
+.hero-content{
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.089);
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    border-radius: 20px;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column
+}
+.hero-content h1{
+    color: white;
+    font-size: 55px;
+    padding-left: 50px;
+}
+.hero-content h4{
+    color: white;
+    padding-left: 50px;
+    width: 600px;
+    margin-top: 10px;
+    line-height: 25px;
+    font-weight: normal;
+}
+.view-service-btn{
+    margin-left: 50px;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: rgb(153, 218, 54);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+}
+@media (max-width:550px) {
+    .hero{
+        width: 100%;
+        height: 70vh;
+    }
+    .hero-container{
+        width: 100%;
+        height: 100%;
+    }
+    .hero-container .bg{
+        border-radius: 0;
+    }
+    .bg img{
+        height: 100%;
+        width: fit-content;
+        border-radius: 0;
+    }
+    .hero-content{
+    }
+    .hero-content h1{
+        font-size: 25px;
+        padding-left: 20px;
+    }
+    .hero-content h4{
+        width: 80%;
+        font-size: 15px;
+        line-height: 20px;
+        padding-left: 20px;
+    }
+    .view-service-btn{
+        margin-left: 20px;
+    }
+    .nav .nav-middle{
+        display: none;
+    }
+    .nav-right{
+        display: none;
+    }
+}

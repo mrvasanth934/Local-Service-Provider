@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.cta-section {
+  padding: 50px 0;
+  background: #ffffff;
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-box {
+  background: #000000;
+  border-radius: 35px;
+  padding: 4rem 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.cta-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cta-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: rgb(153, 218, 54);
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: none;
+}
+
+.phone-icon {
+  font-size: 1.1rem;
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .cta-box {
+    padding: 3.5rem 2.5rem;
+    max-width: 800px;
+  }
+  
+  .cta-title {
+    font-size: 2.2rem;
+  }
+  
+  .cta-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 0;
+  }
+  
+  .cta-container {
+    padding: 0 1rem;
+  }
+  
+  .cta-box {
+    padding: 3rem 2rem;
+    border-radius: 30px;
+  }
+  
+  .cta-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .cta-description {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-description br {
+    display: none;
+  }
+  
+  .cta-button {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .phone-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-box {
+    padding: 2.5rem 1.5rem;
+    border-radius: 25px;
+  }
+  
+  .cta-title {
+    font-size: 1.6rem;
+  }
+  
+  .cta-description {
+    font-size: 0.85rem;
+  }
+  
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
