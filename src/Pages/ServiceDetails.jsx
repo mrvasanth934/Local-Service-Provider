@@ -81,15 +81,13 @@ const ServiceDetails = () => {
             {/* Final CTA */}
             <section className="service-section cta-section">
               <div className="cta-content">
-                <h3>Ready to try {"service.name"}?</h3>
-                <p>Visit their website to get started and explore all features.</p>
+                <h3>Ready to Get Service {"service.name"}?</h3>
+                <p></p>
                 <a
-                  href={"service.website"}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={"/book"}
                   className="cta-button"
                 >
-                  Get Started with {"service.name"}
+                  Book Your Service Now
                   <span className="external-icon">↗</span>
                 </a>
               </div>

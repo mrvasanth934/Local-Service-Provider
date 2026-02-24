@@ -56,6 +56,9 @@
     font-size: 13px;
     margin-bottom: 0;
 }
+.nav-right{
+    cursor: pointer;
+}
 .nav-right h5{
     padding: 10px 30px;
     background-color: rgb(153, 218, 54);

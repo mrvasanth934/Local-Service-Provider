@@ -1,7 +1,7 @@
 .book-service{
     width: 100%;
     height: 100vh;
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(244, 244, 244);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,26 +12,206 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 35px;
 }
-.book-service-container .left , .right{
+.book-service-container .book-left , .book-service-container .book-right{
     width: 100%;
-    height: 90%;
+    height: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    gap: 10px;
+    width: 40%;
+}
+
+
+.book-left-top, .book-left-middle, .book-left-bottom  {
+    height: 100%;
+    width: 100%;
+    border-radius:5px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #e2e8f0;
+}
+.book-left-top{
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    padding: 10px;
+    height: fit-content;
     gap: 20px;
 }
-.book-service-container .left div{
-    height: 100%;
-    width: 100%;
-    border-radius:10px;
-    background-color: rgb(240, 240, 240);
+.book-left-top-left{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: ghostwhite;
+    border-radius: 50%;
 }
-.book-service-container .right div{
+.book-left-top-right{
+    height: 100px;
+    display: flex;
+    align-items:start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.book-left-top-right h6{
+    color: black;
+    font-weight: normal;
+}
+.book-left-middle{
+    padding: 10px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.date-picker{
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.112);
+    border-radius: 5px;
+    height: fit-content;
+    width: 50%;
+}
+.date-picker input{
+    width: 98%;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 2% 1%;
+}
+.choose-time{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 50%;
+    height: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.112);
+    border-radius: 5px;
+}
+.choose-time select , .choose-time select option {
+    width: 98%;
+    height: 98%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.time{
+    border: 1px solid rgba(0, 0, 0, 0.305);
+    font-size: 12px;
+    padding: 5px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.book-left-bottom{
+    padding: 10px;
+}
+.order-summary-heading{
+    background-color: skyblue;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: rgb(0, 0, 0);
+}
+.order-summary-info{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+.meta-data{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.meta-data h4{
+    font-size: 12px;
+}
+.meta-data h5{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.574);
+}
+
+.book-right-top , .book-right-bottom{
     height: 100%;
     width: 100%;
     border-radius:10px;
-    background-color: rgb(240, 240, 240);
+    padding: 10px;
+}
+.book-right-top{
+    height:fit-content;
+}
+.payment-options{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.payment-option{
+    border: 1px solid rgba(0, 0, 0, 0.201);
+    padding: 15px 10px;
+    border-radius: 5px;
+    width: 28%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+.payment-img{
+    width: 25px;
+    height: 25px;
+}
+.payment-img img{
+    width: 100%;
+}
+.payment-option h3{
+    font-size: 10px;
+}
+.card{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card-info label{
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.552);
+}
+.card-inp{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.179);
+    height: 50px;
+    border-radius: 3px;
+}
+.card-inp input{
+    width: 97.5%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.make-payment-btn{
+    background: #2563eb;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }

@@ -1,11 +1,12 @@
 import "./Css/Hero.css"
 import herobgimg from "../assets/bg1.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Popular from "./Popular"
 import HowweWoks from "./HowWeWorks"
 import Category from "./Category"
 import CtaBox from "./CtaBox"
 const Hero = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className="hero">
@@ -20,7 +21,7 @@ const Hero = () => {
                             <h5>category</h5>
                             <h5>Contact us</h5>
                         </div>
-                        <div className="nav-right">
+                        <div onClick={navigate("/signup")} className="nav-right">
                             <h5>Sign up</h5>
                         </div>
                     </div>

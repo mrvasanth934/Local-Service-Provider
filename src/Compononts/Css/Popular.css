@@ -120,6 +120,7 @@ hr{
     align-items: center;
     justify-content: center;
     gap: 10px;
+    cursor: pointer;
 }
 .arrow{
     display: flex;

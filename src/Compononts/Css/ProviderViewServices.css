@@ -1,0 +1,193 @@
+.provider-view-services {
+    width: 65%;
+    min-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.provider-view-services-container {
+    width: 100%;
+    min-height: 97vh;
+    max-height: 100%;
+    display: flex;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.provider-view-services-navs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+.provider-view-service-nav{
+    padding-bottom: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.isActive{
+    border-bottom: 2px solid purple;
+    color: purple;
+}
+.provider-view-services-lists{
+    width: 100%;
+    margin-top: 20px;
+    height: 78vh;
+    background-color: rgba(255, 243, 227, 0);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 10px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-bottom: 20px;
+}
+
+
+.provider-view-service{
+    width: 320px;
+    padding-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.818);
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 10px;
+    position: relative;
+}
+.provider-view-service-name-status{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.provider-view-service-name-status h4{
+    font-size: 20px;
+}
+.provider-view-service-name-status p{
+    color: green;
+    padding: 3px 8px;
+    background-color: rgba(151, 255, 151, 0.321);
+    height: fit-content;
+    border-radius: 20px;
+    font-size: 2px;
+}
+.provider-view-service-name-category p{
+    font-size: 2px;
+    width: fit-content;
+    margin-top: 5px;
+    padding: 2px 7px;
+    background-color: rgba(255, 189, 151, 0.321);
+    color: red;
+}
+.provider-view-service-desc{
+    width: 90%;
+    font-size: 7px;
+    margin-top: 20px;
+    line-height: 20px;
+}
+.badge-flex{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.badge{
+    font-size: 8px;
+    margin-top: 15px;
+}
+.badge-service{
+    font-size: 8px;
+    margin-top: 15px;
+    width: 90%;
+}
+.provider-view-service-price{
+    width: 90%;
+}
+.provider-view-service-price p{
+    background-color: rgba(228, 228, 228, 0.722);
+    width: fit-content;
+    padding: 4px 9px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+}
+.more-btn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.more-btn img{
+    width: 50%;
+}
+.create-service{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    padding-left: 20px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(222, 222, 222, 0.188);
+    margin-top: 20px;
+    border: 1px solid rgba(183, 182, 182, 0.188);
+    flex-direction: column;
+}
+.create-service-inputs{
+     width: 100%;
+    display: flex;
+    height: fit-content;
+    margin-top: 20px;
+    gap: 20px;
+    row-gap: 40px;
+    flex-wrap: wrap;
+}
+.provider-view-create-service{
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.provider-view-create-service label{
+    font-size: 10px;
+}
+
+.provider-view-create-service input , .provider-view-create-service select{
+    height: 40px;
+    padding-left: 10px;
+    outline:none;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.449);
+}
+.provider-view-create-service-btn{
+    height: 40px;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2563eb;
+    color: white;
+    border: 1px solid #2563eb;
+    border-radius: 3px;
+    cursor: pointer;
+}
