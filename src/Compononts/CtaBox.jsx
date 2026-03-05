@@ -1,7 +1,7 @@
 import './Css/CtaBox.css';
 const CtaBox = () => {
   return (
-    <section className="cta-section">
+    <section style={{border:"none"}} className="cta-section">
       <div className="cta-container">
         <div className="cta-box">
           <h2 className="cta-title">Book Trusted Home Services In Minutes</h2>

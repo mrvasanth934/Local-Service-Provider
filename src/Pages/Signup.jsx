@@ -1,4 +1,4 @@
-import "./Css/Signup.css"
+import "./Css/Login.css"
 import loginImg from "../assets/login (2).jpg"
 import googleIcon from "../assets/google-icon.png"
 import { Link, useNavigate } from "react-router-dom"
@@ -6,6 +6,8 @@ import { useState } from "react"
 import eyeClose from "../assets/eye-close.png"
 import eyeOpen from "../assets/eye-open.png"
 import { useEffect } from "react"
+import  axios from "axios";
+import { toast } from "react-toastify"
 const Signup = () => {
     const navigate = useNavigate()
     const [userName, setUserName] = useState()
@@ -18,8 +20,17 @@ const Signup = () => {
     const [passwordError, setpasswordError] = useState()
     const [isOpened, setIsOpened] = useState(false)
     const emailFormat = /^[a-z]+\d+@[a-z]+.com$/
-    useEffect(() => {
-    })
+    // useEffect(() => {
+    // })
+    // const handleSubmit = async() =>{
+    //     toast.error("hello")
+    //     const response = await axios.post('http://localhost:3000/api/v1/auth/signup',{userName,email,mobileNumber:phone,password})
+    //     response && response.data.success == false && (response.data.message == "userName is required" || response.data.message.includes("userName")) ? setUserNameError(response.data.message) : setUserNameError("")
+    //     response && response.data.success == false && response.data.message.includes("email") ? setEmailError(response.data.message) : setEmailError("")
+    //     response && response.data.success == false && (response.data.message.includes("number") || response.data.message.includes("mobile"))  ? setPhoneNumberError(response.data.message) : setPhoneNumberError("")
+    //     response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
+    //     response && response.data.success == true && response.data.message == "signup successfull" && toast.success("Signup successfull")
+    // }
     const handleSignup = async () => {
         if (!userName) {
             setUserNameError("UserName is Required")
@@ -130,7 +141,7 @@ const Signup = () => {
                                     {passwordError ? <p className="error">{passwordError}</p> : <p className="error-clear">No error</p>}
                                 </div>
                             </form>
-                            <div onClick={() => { handleSignup() }} className="submit-button">
+                            <div onClick={() => { handleSubmit() }} className="submit-button">
                                 Register
                             </div>
                             <h6>or</h6>

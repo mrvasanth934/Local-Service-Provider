@@ -5,6 +5,8 @@ import Popular from "./Popular"
 import HowweWoks from "./HowWeWorks"
 import Category from "./Category"
 import CtaBox from "./CtaBox"
+import Banner from "./Banner"
+import Banner2 from "./Banner2"
 const Hero = () => {
     const navigate = useNavigate()
     return (
@@ -30,13 +32,16 @@ const Hero = () => {
                         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quibusdam, consequatur </h4>
                         <div className="view-service-btn">View Services</div>
                     </div>
-                    <div className="bg"><img src={herobgimg} alt="" /></div>
+                    <div className="bg">
+                        <img src={herobgimg} alt="" />
+                    </div>
                 </div>
             </div>
+             <Category />
+             <Banner/>
             <Popular />
-            <HowweWoks />
-            <Category />
-            <CtaBox />
+            <Banner2/>
+            {/* <CtaBox /> */}
         </>
     )
 }

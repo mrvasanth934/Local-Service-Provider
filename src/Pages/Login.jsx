@@ -100,7 +100,7 @@ const Login = () => {
                                 <div className="icon"><img src={googleIcon} alt="" /></div>
                                 Continue with Google
                             </div>
-                            <h5>Don` have an account? <Link to="/register">Register here</Link></h5>
+                            <h5>Don` have an account? <Link to="/signup">Register here</Link></h5>
                         </div>
 
                     </div>

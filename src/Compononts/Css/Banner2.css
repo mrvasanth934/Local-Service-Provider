@@ -1,0 +1,120 @@
+.service-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 10px 5%;
+    border-radius: 20px;
+}
+
+.banner2{
+    margin-top: 30px;
+    background-color: #FDF4FF;
+    width: 70%;
+    margin-bottom: 30px;
+    padding: 2% 5%;
+
+}
+
+.banner-left {
+    flex: 1;
+}
+/* .banner2-left{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    flex-direction: column;
+} */
+.banner-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.banner-subtitle {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+.banner-desc {
+    font-size: 15px;
+    margin-top: 20px;
+    color: #e9ecef;
+}
+.trust-row {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+.icon {
+    font-size: 18px;
+}
+.banner-btn {
+    margin-top: 30px;
+    background-color: rgb(153, 218, 54);
+    border: none;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+}
+.banner2-btn{
+    border: 1px solid purple;
+    background-color: rgba(221, 160, 221, 0.269);
+    color: purple;
+}
+.banner-right {
+    display: flex;
+    justify-content: center;
+}
+.banner-right img {
+    max-width: 300px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+
+    .service-banner {
+        padding: 30px;
+    }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .service-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .banner-right {
+        margin-top: 30px;
+    }
+
+    .trust-row {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+}

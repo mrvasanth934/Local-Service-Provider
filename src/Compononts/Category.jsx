@@ -10,14 +10,16 @@ const Category = () => {
   const navigate = useNavigate()
   return (
     <>
-      <hr className="category-hr" />
+      {/* <hr className="category-hr" /> */}
       <div className="categorys">
         <div className="category-container">
           <div className="top">
             <h2>Browse by category </h2>
-            <div className="category-lists">
 
-            </div>
+            <div onClick={() => { navigate("/service") }} className="view-btn viewAll">
+                View All
+                <div className="arrow"><img src={arrow} alt="" /></div>
+              </div>
           </div>
           <div className="bottom">
             <div className="categoryimg">
@@ -25,7 +27,7 @@ const Category = () => {
                 <img src={category1} alt="" />
               </div>
               <div className="status">
-                <h6>21 Online</h6>
+                <h6>21 providers</h6>
               </div>
               <div className="about-category">
                 <h4>Home Cleaning</h4>
@@ -37,7 +39,7 @@ const Category = () => {
                 <img src={category2} alt="" />
               </div>
               <div className="status">
-                <h6>21 Online</h6>
+                <h6>21 providers</h6>
               </div>
               <div className="about-category">
                 <h4>Plumbing</h4>
@@ -49,7 +51,7 @@ const Category = () => {
                 <img src={category3} alt="" />
               </div>
               <div className="status">
-                <h6>21 Online</h6>
+                <h6>21 providers</h6>
               </div>
               <div className="about-category">
                 <h4>Electrical</h4>
@@ -61,21 +63,30 @@ const Category = () => {
                 <img src={category4} alt="" />
               </div>
               <div className="status">
-                <h6>21 Online</h6>
+                <h6>21 providers</h6>
               </div>
               <div className="about-category">
                 <h4>Carpentry</h4>
                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
               </div>
             </div>
-          </div>
-          <div onClick={()=>{navigate("/service")}} className="view-btn viewAll">
-            View All
-            <div className="arrow"><img src={arrow} alt="" /></div>
+            <div className="categoryimg">
+              <div className="img">
+                <img src={category4} alt="" />
+              </div>
+              <div className="status">
+                <h6>21 providers</h6>
+              </div>
+              <div className="about-category">
+                <h4>Carpentry</h4>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-      <hr className="category-hr" />
+      {/* <hr className="category-hr" /> */}
     </>
   );
 };

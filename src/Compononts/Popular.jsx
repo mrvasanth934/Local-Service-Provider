@@ -7,7 +7,7 @@ const Popular = () => {
         <>
             <div className="popular">
                 <div className="popular-container">
-                    <h1>Top Rated Sellers</h1>
+                    <h1>Top Rated Services</h1>
                     <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, dolore!</h5>
                     <div className="sellers">
                         <div className="seller">

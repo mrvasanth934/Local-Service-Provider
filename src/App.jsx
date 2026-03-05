@@ -10,11 +10,17 @@ import Login from './Pages/Login'
 import Profile from './Pages/Profile'
 import ProviderProfile from './Pages/ProviderProfile'
 import Admin from './Pages/Admin'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [name,setName] = useState("")
   return (
     <>
+    <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Hero/>}/>
@@ -22,7 +28,7 @@ function App() {
         <Route path='/service-details' element={<ServiceDetails/>}/>
         <Route path='/book' element={<BookServicePage/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Signup/>}/>
+        <Route path='/signup' element={<Signup/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/provider-profile' element={<ProviderProfile/>}/>
         <Route path='/admin' element={<Admin/>}/>
