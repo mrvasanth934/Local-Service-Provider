@@ -6,6 +6,9 @@ import { useState } from "react"
 import { useEffect } from "react"
 import eyeClose from "../assets/eye-close.png"
 import eyeOpen from "../assets/eye-open.png"
+import axios from "axios"
+import { authBase } from "../../url"
+import { toast } from "react-toastify"
 const Login = () => {
     const navigate = useNavigate()
     const [emailOrMobileNumerOrPassword, setEmailOrMobileNumerOrPassword] = useState()
@@ -13,57 +16,23 @@ const Login = () => {
     const [emailError, setEmailError] = useState()
     const [passwordError, setpasswordError] = useState()
     const [isOpened, setIsOpened] = useState(false)
-    const emailFormat = /^[a-z]+\d+@[a-z]+.com$/
-    const handleLogin = async () => {
-        console.log(emailOrMobileNumerOrPassword);
-        if (!emailOrMobileNumerOrPassword) {
-            setEmailError("UserName or Emailid or MobileNumber are required")
-        }
-        else {
-            if (!isNaN(emailOrMobileNumerOrPassword)) {
-                if (emailOrMobileNumerOrPassword.length != 10) {
-                    setEmailError("Mobile number must 10 character")
-                }
-                else {
-                    if (!/^[6-9]{1}/.test(emailOrMobileNumerOrPassword) || /[0-9]{9}$/.test(emailOrMobileNumerOrPassword)) {
-                        setPhoneNumberError("Enter a valid mobile Number")
-                    }
-                    else {
-                        setPhoneNumberError("")
-                    }
-                }
-            }
-            else{
-                setEmailError("")
-            }
-        }
-        if (!password) {
-            setpasswordError("Password is Required")
-        }
-        else {
-            if (password.length < 8) {
-                setpasswordError("password must 8 character")
-            }
-            else {
-                setpasswordError("")
-            }
-        }
-        // if (!emailError | !passwordError) {
-        //     const response = await axios.post('http://localhost:3000/auth/login', { userField: emailOrMobileNumerOrPassword, password }, { withCredentials: true })
-        //     response ? response.data.success == true ?
-        //     response.data.message == "login successfull" && navigate("/"):  //If Success
-        //     response.data.message == "user can`t find continue with signup" ? setEmailError("user can`t find continue with signup") : //If Not Success
-        //     response.data.message == "password can`t matched" && setpasswordError("password can`t matched"): 
-        //     console.log("server failure")
-        // }
+    const getProfile = async () => {
+        const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+        response && response.data.success == true && navigate("/")
     }
-    // const getProfile = async () => {
-    //     const respose = await axios.get('http://localhost:3000/auth/profile', { withCredentials: true })
-    //     respose ? respose.data.success == true && respose.data.user && navigate("/profile") : console.log();
-    // }
-    // useEffect(() => {
-    //     getProfile()
-    // })
+    useEffect(() => {
+        getProfile()
+    }, [])
+    const isSuccess = () =>{
+        toast.success("login successfull")
+        navigate("/")
+    }
+    const handleLogin  = async() =>{
+        const response = await axios.post(`${authBase}/login`,{userCredintials:emailOrMobileNumerOrPassword,password},{withCredentials:true})
+        response && response.data.success == false && (response.data.message == "email, userName or mobileNumber is required" || response.data.message.includes("email") || response.data.message.includes("number") || response.data.message.includes("mobile") || response.data.message.includes("userName"))  ? setEmailError(response.data.message) : setEmailError("") 
+        response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("") 
+        response && response.data.success == true &&  response.data.message == "login successfull" && isSuccess()
+    }
     return (
         <>
             <section className="login">

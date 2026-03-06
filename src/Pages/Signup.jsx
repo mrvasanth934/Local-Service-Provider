@@ -8,6 +8,7 @@ import eyeOpen from "../assets/eye-open.png"
 import { useEffect } from "react"
 import  axios from "axios";
 import { toast } from "react-toastify"
+import { authBase } from "../../url"
 const Signup = () => {
     const navigate = useNavigate()
     const [userName, setUserName] = useState()
@@ -20,87 +21,24 @@ const Signup = () => {
     const [passwordError, setpasswordError] = useState()
     const [isOpened, setIsOpened] = useState(false)
     const emailFormat = /^[a-z]+\d+@[a-z]+.com$/
-    // useEffect(() => {
-    // })
-    // const handleSubmit = async() =>{
-    //     toast.error("hello")
-    //     const response = await axios.post('http://localhost:3000/api/v1/auth/signup',{userName,email,mobileNumber:phone,password})
-    //     response && response.data.success == false && (response.data.message == "userName is required" || response.data.message.includes("userName")) ? setUserNameError(response.data.message) : setUserNameError("")
-    //     response && response.data.success == false && response.data.message.includes("email") ? setEmailError(response.data.message) : setEmailError("")
-    //     response && response.data.success == false && (response.data.message.includes("number") || response.data.message.includes("mobile"))  ? setPhoneNumberError(response.data.message) : setPhoneNumberError("")
-    //     response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
-    //     response && response.data.success == true && response.data.message == "signup successfull" && toast.success("Signup successfull")
-    // }
-    const handleSignup = async () => {
-        if (!userName) {
-            setUserNameError("UserName is Required")
+    const getProfile = async() =>{
+        const response = await axios.get(`${authBase}/profile`,{withCredentials:true})
+        response && response.data.success == true && navigate("/")
+    }
+    useEffect(()=>{
+        getProfile()
+    },[])
+    const handleSubmit = async() =>{
+        const isSuccess = () =>{
+            toast.success("Signup successfull",{autoClose:2000})
+            navigate("/login")
         }
-        else {
-            setUserNameError("")
-        }
-        if (!email) {
-            setEmailError("Email is required")
-        }
-        else {
-            if (!emailFormat.test(email)) {
-                setEmailError("Enter a valid email addres")
-            }
-            else {
-                setEmailError("")
-            }
-        }
-        if (!phone) {
-            setPhoneNumberError("Mobile Number is required")
-        }
-        else {
-            if (phone.length != 10) {
-                setPhoneNumberError("Mobile number must 10 character")
-            }
-            else {
-                if (!/^[6-9]{1}/.test(phone) || /[0-9]{9}$/.test(email)) {
-                    setPhoneNumberError("Enter a valid mobile Number")
-                }
-                else {
-                    setPhoneNumberError("")
-                }
-            }
-        }
-        if (!password) {
-            setpasswordError("Password is Required")
-        }
-        else {
-            if (password.length < 8) {
-                setpasswordError("password must 8 character")
-            }
-            else {
-                if (!/[a-z]+/.test(password)) {
-                    setpasswordError("Enter atleast one small letter")
-                }
-                else if (!/[A-Z]+/.test(password)) {
-                    setpasswordError("Enter atleast one capital letter")
-                }
-                else if (!/\d+/.test(password)) {
-                    setpasswordError("Enter atleast one number")
-                }
-                else if (!/[!@#$%^&*]+/.test(password)) {
-                    setpasswordError("Enter atleast one special character")
-                }
-                else {
-                    setpasswordError("")
-                }
-            }
-        }
-        // if (!userNameError || !passwordError || !emailError || !phoneNumberError) {
-        //     const response = await axios.post('http://localhost:3000/auth/signup', { userName, email, phoneNumber: phone, password }, { withCredentials: true })
-        //     response ? response.data.success == true ?
-        //         response.data.message == "signup successfull" && navigate("/") :  // If Success
-        //         response.data.message == "user already exist by th email" ? setEmailError("user is already exist by th email") :// IF Not Success
-        //             response.data.message == "user already exist by th userName" ? setUserNameError("user is already exist by th userName") :
-        //                 response.data.message == "user already exist by the PhoneNumber" ? setPhoneNumberError("user is already exist by the PhoneNumber") : console.log("hello")
-        //         :
-        //         console.log("Server failure");
-
-        // }
+        const response = await axios.post(`${authBase}/signup`,{userName,email,mobileNumber:phone,password})
+        response && response.data.success == false && (response.data.message == "userName is required" || response.data.message.includes("userName")) ? setUserNameError(response.data.message) : setUserNameError("")
+        response && response.data.success == false && response.data.message.includes("email") ? setEmailError(response.data.message) : setEmailError("")
+        response && response.data.success == false && (response.data.message.includes("number") || response.data.message.includes("mobile"))  ? setPhoneNumberError(response.data.message) : setPhoneNumberError("")
+        response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
+        response && response.data.success == true && response.data.message == "signup successfull" && isSuccess()
     }
 
     return (

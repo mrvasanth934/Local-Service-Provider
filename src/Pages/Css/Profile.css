@@ -164,4 +164,12 @@
     display: flex;
     align-items: center;
     border-radius: 5px;
+    cursor: pointer;
+}
+.error-msg , .error-clear-msg{
+    color:  red;
+    position: absolute;
+    font-size: 5px;
+    bottom: -20px;
+    left: 3px;
 }

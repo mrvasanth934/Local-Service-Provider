@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
 }
-.login-container{
+.login .login-container{
     width: 70%;
     min-height: 90%;
     max-height: 100%;
@@ -16,22 +16,22 @@
     border-radius: 10px;
     padding-bottom: 10px;
 }
-.login-left-side{
+.login .login-left-side{
     width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.login-img{
+.login .login-img{
     width: 85%;
     height: 90%;
 }
-img{
+.login img{
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
-.login-right-side{
+.login .login-right-side{
     width: 50%;
     display: flex;
     align-items: start;
@@ -39,7 +39,7 @@ img{
     padding-top: 50px;
 }
 
-.form{
+.login .form{
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -47,25 +47,25 @@ img{
     justify-content: center;
     
 }
-h1{
+.login h1{
     font-weight: bolder;
     color: rgb(0, 69, 50);
 }
-h4{
+.login h4{
     font-size: 10px;
     color: rgb(0, 69, 50);
 }
-form{
+.login form{
     margin-top: 20px;
     gap:10px;
     display: flex;
     flex-direction: column;
 }
-label{
+.login label{
     color: rgba(0, 39, 28, 0.486);
     font-size: 10px;
 }
-input{
+.login input{
     width: 97%;
     height: 40px;
     outline: none;
@@ -76,13 +76,13 @@ input{
     padding-left: 10px;
     color: rgba(0, 0, 0, 0.704);
 }
-input:focus{
+/* .login input:focus{
     border: 2px solid rgb(0, 39, 28);
-}
-input::placeholder{
+} */
+.login input::placeholder{
     color: rgba(0, 0, 0, 0.195);
 }
-.submit-button{
+.login .submit-button{
     margin-top: 30px;
     width: 100%;
     border: 1px solid rgb(0, 39, 28);
@@ -95,21 +95,21 @@ input::placeholder{
     border-radius: 5px;
     cursor: pointer;
 }
-h5{
+.login h5{
     margin-top: 20px;
     text-align: center;
     color: rgb(0, 39, 28);
 }
-h5 a{
+.login h5 a{
     font-weight: 600;
 }
-h6{
+.login h6{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 13px;
 }
-.google-auth{
+.login .google-auth{
     width: 100%;
     border: 1px solid black;
     height: 40px;
@@ -126,9 +126,9 @@ h6{
     width: 20px;
     height: 20px;
 }
-img{
+/* img{
     width: 100%;
-}
+} */
 input::placeholder{
     font-weight: normal;
 }

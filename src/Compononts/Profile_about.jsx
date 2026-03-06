@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Css/Profile_about.css"
 import profileImg from '../assets/login.jpg'
-const Profile_about = () => {
-
+const Profile_about = (probs) => {
+    const profile = probs.user
+    console.log(profile);
     return (
         <>
             <div className="profile_about">
@@ -20,19 +21,19 @@ const Profile_about = () => {
                             <div className="profile-about-personal-info-contacts">
                                 <div className="profile-about-personal-info-contact">
                                     <h6>FullName</h6>
-                                    <h5>mrvasanth93@gmail.com</h5>
+                                    <h5>{profile && profile.userName}</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>UserName</h6>
-                                    <h5>mrvasanth93@gmail.com</h5>
+                                    <h5>@{profile && profile.userName}</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>Email</h6>
-                                    <h5>mrvasanth93@gmail.com</h5>
+                                    <h5>{profile && profile.email}</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>Mobile Number</h6>
-                                    <h5>mrvasanth93@gmail.com</h5>
+                                    <h5>+91 - {profile && profile.mobileNumber}</h5>
                                 </div>
                             </div>
                         </div>
@@ -41,23 +42,23 @@ const Profile_about = () => {
                             <div className="profile-about-personal-info-contacts">
                                 <div className="profile-about-personal-info-contact">
                                     <h6>Label</h6>
-                                    <h5>Home</h5>
+                                    <h5>-</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>Full Address</h6>
-                                    <h5>3/218, Serugalathur, Kudavasal</h5>
+                                    <h5>-</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>City</h6>
-                                    <h5>Thiruvarur</h5>
+                                    <h5>-</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>State</h6>
-                                    <h5>Tamilnadu</h5>
+                                    <h5>-</h5>
                                 </div>
                                 <div className="profile-about-personal-info-contact">
                                     <h6>Pincode</h6>
-                                    <h5>612604</h5>
+                                    <h5>-</h5>
                                 </div>
                             </div>
                         </div>
