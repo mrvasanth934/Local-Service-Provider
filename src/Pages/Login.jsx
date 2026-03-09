@@ -17,21 +17,29 @@ const Login = () => {
     const [passwordError, setpasswordError] = useState()
     const [isOpened, setIsOpened] = useState(false)
     const getProfile = async () => {
-        const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
-        response && response.data.success == true && navigate("/")
+        try {
+            const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+            response && response.data.success == true && navigate("/")
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     useEffect(() => {
         getProfile()
     }, [])
-    const isSuccess = () =>{
+    const isSuccess = () => {
         toast.success("login successfull")
         navigate("/")
     }
-    const handleLogin  = async() =>{
-        const response = await axios.post(`${authBase}/login`,{userCredintials:emailOrMobileNumerOrPassword,password},{withCredentials:true})
-        response && response.data.success == false && (response.data.message == "email, userName or mobileNumber is required" || response.data.message.includes("email") || response.data.message.includes("number") || response.data.message.includes("mobile") || response.data.message.includes("userName"))  ? setEmailError(response.data.message) : setEmailError("") 
-        response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("") 
-        response && response.data.success == true &&  response.data.message == "login successfull" && isSuccess()
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post(`${authBase}/login`, { userCredintials: emailOrMobileNumerOrPassword, password }, { withCredentials: true })
+            response && response.data.success == false && (response.data.message == "email, userName or mobileNumber is required" || response.data.message.includes("email") || response.data.message.includes("number") || response.data.message.includes("mobile") || response.data.message.includes("userName")) ? setEmailError(response.data.message) : setEmailError("")
+            response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
+            response && response.data.success == true && response.data.message == "login successfull" && isSuccess()
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     return (
         <>

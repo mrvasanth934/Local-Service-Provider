@@ -93,7 +93,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     background-color: rgba(222, 222, 222, 0.188);
 }
@@ -116,6 +116,11 @@
     height: 50px;
     background-color: rgba(213, 213, 213, 0.577);
     border-radius: 10px;
+}
+.name-desc h3{
+    font-size: 15px;
+    font-weight: normal;
+    font-weight: 700;
 }
 .service-title-desc h2{
     font-size: 18px;
@@ -149,4 +154,24 @@
 }
 .name{
     background-color: transparent  !important;
+}
+.no-services{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.no-services h3{
+    font-size: 25px;
+}
+.no-services h6{
+    margin-top: 15px;
+    color: blue;
+    font-size: 15px;
+    text-decoration: underline;
+}
+.name-desc h6{
+    color: rgba(0, 0, 0, 0.412);
 }

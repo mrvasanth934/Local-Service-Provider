@@ -7,16 +7,33 @@ const Password_security = () => {
     const [oldpassword, setOldPassword] = useState()
     const [newPassword, setNewPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
+    const [resetPasswordEmail, setResetPasswordEmail] = useState()
     const updateMobileNumber = async () => {
-        const isSuccess = () =>{
-            toast.success(response.data.message)
+        const isSuccess = (message) => {
+            toast.success(message)
             setOldPassword("")
             setNewPassword("")
             setConfirmPassword("")
         }
-        const response = await axios.put(`${authBase}/change-password`, { currentPassword:oldpassword,newPassword,confirmPassword }, { withCredentials: true })
-        response && response.data.success == false && toast.error(response.data.message)
-        response && response.data.success == true && isSuccess()
+        try {
+            const response = await axios.put(`${authBase}/change-password`, { currentPassword: oldpassword, newPassword, confirmPassword }, { withCredentials: true })
+            response && response.data.success == false && toast.error(response.data.message)
+            response && response.data.success == true && isSuccess(response.data.message)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
+    }
+    const handleForgetPassword = async () => {
+        const isSuccessForgetPassword = (message)=>{
+            toast.success(message)
+        }
+        try {
+            const response = await axios.put(`${authBase}/forget-password`, {email:resetPasswordEmail})
+            response && response.data.success == false && toast.error(response.data.message)
+            response && response.data.success == true && isSuccessForgetPassword(response.data.message)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     return (
         <>
@@ -37,7 +54,7 @@ const Password_security = () => {
                                 <label htmlFor="userName">Confirm Password</label>
                                 <input onChange={(e) => { setConfirmPassword(e.target.value) }} value={confirmPassword} type="text" placeholder="Confirm Password" />
                             </div>
-                            <div onClick={()=>{updateMobileNumber()}} className="update-profile-btn password-update-btn">
+                            <div onClick={() => { updateMobileNumber() }} className="update-profile-btn password-update-btn">
                                 Update
                             </div>
                         </div>
@@ -47,9 +64,9 @@ const Password_security = () => {
                         <div className="update-profile-inputs">
                             <div className="update-profile-input grid3">
                                 <label htmlFor="FullName">Email</label>
-                                <input type="text" placeholder="Enter your Email to Update your Password" />
+                                <input onChange={(e)=>{setResetPasswordEmail(e.target.value)}} value={resetPasswordEmail} type="text" placeholder="Enter your Email to Update your Password" />
                             </div>
-                            <div className="update-profile-btn password-update-btn">
+                            <div onClick={() => { handleForgetPassword() }} className="update-profile-btn password-update-btn">
                                 Update
                             </div>
                         </div>

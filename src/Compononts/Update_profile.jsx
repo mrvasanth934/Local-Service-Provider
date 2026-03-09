@@ -8,32 +8,44 @@ const Update_profile = () => {
     const [userName, setUsername] = useState()
     const [email, setEmail] = useState()
     const [mobileNumber, setMobileNumber] = useState()
-    const isUserNameUpdateSuccess = () =>{
-        toast.success(response.data.message)
+    const isUserNameUpdateSuccess = (message) => {
+        toast.success(message)
         setUsername("")
     }
-    const isEmailUpdateSuccess = () =>{
-        toast.success(response.data.message)
+    const isEmailUpdateSuccess = (message) => {
+        toast.success(message)
         setUsername("")
     }
-    const isPasswordUpdateSuccess = () =>{
-        toast.success(response.data.message)
+    const isPasswordUpdateSuccess = (message) => {
+        toast.success(message)
         setUsername("")
     }
     const updateUsername = async () => {
-        const response = await axios.put(`${authBase}/update-username`, { userName }, { withCredentials: true })
-        response && response.data.success == false && toast.error(response.data.message)
-        response && response.data.success == true && isUserNameUpdateSuccess()
+        try {
+            const response = await axios.put(`${authBase}/update-username`, { userName }, { withCredentials: true })
+            response && response.data.success == false && toast.error(response.data.message)
+            response && response.data.success == true && isUserNameUpdateSuccess(response.data.message)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     const updateEmail = async () => {
-        const response = await axios.put(`${authBase}/update-email`, { email }, { withCredentials: true })
-        response && response.data.success == false && toast.error(response.data.message)
-        response && response.data.success == true && isEmailUpdateSuccess()
+        try {
+            const response = await axios.put(`${authBase}/update-email`, { email }, { withCredentials: true })
+            response && response.data.success == false && toast.error(response.data.message)
+            response && response.data.success == true && isEmailUpdateSuccess(response.data.message)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     const updateMobileNumber = async () => {
-        const response = await axios.put(`${authBase}/update-mobile-number`, { mobileNumber }, { withCredentials: true })
-        response && response.data.success == false && toast.error(response.data.message)
-        response && response.data.success == true && isPasswordUpdateSuccess()
+        try {
+            const response = await axios.put(`${authBase}/update-mobile-number`, { mobileNumber }, { withCredentials: true })
+            response && response.data.success == false && toast.error(response.data.message)
+            response && response.data.success == true && isPasswordUpdateSuccess(response.data.message)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     return (
         <>

@@ -4,15 +4,6 @@ const ServiceDetails = () => {
   return (
     <div className="service-details-page">
       <div className="container">
-        {/* Breadcrumb */}
-        <nav className="breadcrumb">
-          <Link to="/">Home</Link>
-          <span>→</span>
-          <Link to={`/category/${""}`}>servicecategory</Link>
-          <span>→</span>
-          <span>servicename</span>
-        </nav>
-
         <div className="service-details">
           {/* service Header */}
           <div className="service-header">
@@ -21,31 +12,38 @@ const ServiceDetails = () => {
                 <img src={"service.logo"} alt="" />
               </div>
               <div className="service-title-section">
-                <h1 className="service-name">Vasanth</h1>
-                <p className="service-tagline">Ac Service</p>
+                <h1 className="service-name">Painting</h1>
+                <p className="service-tagline">Home decor</p>
                 <hr />
                 <div className="service-meta-info">
                   <span className="meta-item">
-                    <strong>Email: <br /> </strong> mrvasanth93@gmail.com
+                    <strong>Provider: <br /> </strong> Vasanth
                   </span>
                   <span className="meta-item">
-                    <strong>Phone:</strong>
-                    <span>9345488130</span>
+                    <strong>Provider Id:</strong>
+                    <span>#88490345634</span>
                   </span> <br />
                   <span className="meta-item">
                     <strong>Distance:</strong>
                     <span>7 KM</span>
                   </span>
                   <hr />
-                  <span className="meta-item">
-                    <strong>Email: <br /> </strong> mrvasanth93@gmail.com
-                  </span>
+                </div>
+                <div className="meta-item">
+                  <strong>Service Id: <br /> </strong> #754358534859
                   <span className="meta-item">
                     <strong>Ratings: <br /> </strong> 4.5
                   </span>
                 </div>
+                <div className="ratings-category ratings-category-details">
+                  <div className="service-list">
+                    <h3>COD available</h3>
+                    <h3>100+ Customers</h3>
+                    {/* <h3>+2 More</h3> */}
+                  </div>
+                </div>
                 <div className="ratings-now-btn">
-                  <h5>See Available Slots</h5>
+                  <h5>See Ratings and Reviews</h5>
                 </div>
               </div>
             </div>

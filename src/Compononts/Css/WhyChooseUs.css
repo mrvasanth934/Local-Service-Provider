@@ -1,84 +1,64 @@
-.whyChoose-us {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    
+.why-choose-us-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
 }
 
-.whyChoose-us .whyChoose-us-container {
+.why-choose-us-container {
     width: 80%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.heading-why-choose {
-    text-align: start;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-.para-why-choose{
-    font-size: 17px;
-    line-height: 30px;
-    margin-top: 30px;
-    color: rgba(0, 0, 0, 0.792);
+
+.why-choose-us-title {
+  margin-bottom: 40px;
+  font-size: 24px;
+  color: #333;
+  line-height: 1.5;
 }
 
-.reasons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    gap: 20px;
+.why-choose-us-grid {
+  display: flex;
+  gap: 15px;
 }
-.reasons .reason{
-    height: 230px;
-    width: 120px;
-    border-radius: 30px;
+
+.why-choose-us-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  justify-content: center;
+  padding: 7px 20px;
 }
-.reasons .task{
-    height: 270px;
+
+.why-choose-us-card span {
+  font-size: 14px;
+  color: #333;
 }
-.reason div{
-    width: 100%;
-    height: 100%;overflow: hidden;
-    border-radius: 30px;
+
+.icon svg {
+  stroke: #2ecc71;
+  fill: none;
+  stroke-width: 2;
 }
-.reason div img{
-    height: 100%;
-    border-radius: 30px;
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-.content{
-    width: 40%;
-    font-weight: 400;
-    color: black;
-    font-weight: normal;
-}
-@media (max-width:550px) {
-    .whyChoose-us .whyChoose-us-container{
-        flex-direction: column;
-    }
-    .content{
-        width: 100%;
-        text-align: justify;
-    }
-    .para-why-choose{
-        font-size: 13px;
-        line-height: 25px;
-    }
-    .reasons{
-        border: 1px solid black;
-        width: 100%;
-        display: none;
-    }
-    .reason{
-        width: 30%;
-        height: 150px;
-    }
-    .reason .task{
-        height: 90px;
-    }
+
+@media (max-width: 500px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }

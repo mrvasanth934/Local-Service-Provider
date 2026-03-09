@@ -24,6 +24,7 @@
     justify-content:space-between;
     gap: 20px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 .seller{
     width: 250px;
@@ -35,27 +36,26 @@
     justify-content: center;
     flex-direction: column;
     padding: 15px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.063);
+    box-shadow: 0.5px 0.6px 5px rgba(0, 0, 0, 0.063);
+    /* border: 2px solid rgba(228, 228, 228, 0.254); */
     height: 300px;
 }
 .profile-status{
     width: 100%;
     height: 50px;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
 }
 .pr-status{
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: end;
-    gap: 10px;
+    /* gap: 10px; */
 }
 .pr-status h3{
-    font-size: 7px;
+    font-size: 1px;
     background-color: rgba(173, 255, 228, 0.577);
-    padding: 4px 10px;
+    padding: 2px 5px;
     color: rgb(6, 82, 20);
     border-radius: 5px;
     width: fit-content;
@@ -67,13 +67,34 @@
 .profile-pic{
     width: 40px;
     height: 40px;
-    border-radius: 30%;
+    border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.125);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bolder;
     font-size: 20px;
+    color: rgba(0, 0, 0, 0.317);
+}
+.profile-pic-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.profile-pic-details-name{
+    height: 40px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 5px; */
+}
+.profile-pic-details-name h5{
+    font-size: 15px;
+}
+.profile-pic-details-name h6{
+    color: rgb(177, 177, 177);
+    font-size: 5px;
 }
 .name-desc h3{
     font-weight: bolder;
@@ -85,7 +106,8 @@
 .name-desc h6{
     margin-top: 10px;
     line-height: 20px;
-    color: rgba(0, 0, 0, 0.534);
+    color: rgba(0, 0, 0, 0.759);
+    
 }
 hr{
     width: 100%;
@@ -121,7 +143,13 @@ hr{
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+.pop{
+    color: white;
+    background-color: rgb(0, 177, 247);
     cursor: pointer;
+    padding: 7px 16px;
+    border-radius: 3px;
 }
 .arrow{
     display: flex;
@@ -133,6 +161,35 @@ hr{
 .arrow img{
     width: 100%;
 }
+.why-choose-us-grid {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.why-choose-us-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: center;
+  padding: 7px 10px;
+}
+
+.why-choose-us-card span {
+  font-size: 10px;
+  color: #333;
+}
+
+.icon svg {
+  stroke: #2ecc71;
+  fill: none;
+  stroke-width: 2;
+}
+
 @media (max-width:550px) {
     .sellers{
         flex-direction: column;

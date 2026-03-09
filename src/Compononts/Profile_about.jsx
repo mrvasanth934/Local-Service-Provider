@@ -3,7 +3,6 @@ import "./Css/Profile_about.css"
 import profileImg from '../assets/login.jpg'
 const Profile_about = (probs) => {
     const profile = probs.user
-    console.log(profile);
     return (
         <>
             <div className="profile_about">

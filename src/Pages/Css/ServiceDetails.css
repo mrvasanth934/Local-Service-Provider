@@ -5,12 +5,10 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 1%;
 }
 
 .container {
   width: 80%;
-  margin-top: 30px;
   height: 90%;
 }
 
@@ -85,11 +83,12 @@
 }
 
 .service-tagline {
-  font-size: 12px;
+  font-size: 10px;
   color: #0000006a;
   line-height: 1.5;
   margin: 0 0 0 0;
   margin-top: -5px;
+  font-weight: normal;
 }
 
 .service-meta-info {
@@ -421,7 +420,7 @@
   justify-content: center;
   gap: 10px;
   height: 100%;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 
@@ -446,7 +445,9 @@
   justify-content: center;
   cursor: pointer;
 }
-
+.ratings-category-details{
+  margin-bottom: 20px;
+}
 /* Mobile Styles */
 @media (max-width: 768px) {
   .service-details-page {

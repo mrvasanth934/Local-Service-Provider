@@ -12,6 +12,7 @@ import ProviderProfile from './Pages/ProviderProfile'
 import Admin from './Pages/Admin'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ServerError from './Pages/ServerError'
 
 function App() {
   const [name,setName] = useState("")
@@ -32,6 +33,7 @@ function App() {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/provider-profile' element={<ProviderProfile/>}/>
         <Route path='/admin' element={<Admin/>}/>
+        <Route path='/server-error-response' element={<ServerError/>}/>
       </Routes>
     </BrowserRouter>
     </>

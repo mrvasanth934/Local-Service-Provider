@@ -23,10 +23,10 @@ const ProviderViewOrders = () => {
                                 </div>
                                 <p>OnGoing</p>
                             </div>
-                            <p className="badge-flex"><p className="badge">User Id : #3243345654</p> <p className="badge">Service Id : #3243345654</p></p>
-                            <p className="badge-flex"><p className="provider-view-service-created-at badge">Orderd At 12 Jul </p>
-                            <p className="provider-view-service-orders badge">Completed At 15 Jul</p></p>
-                            <p className="badge-flex"><p className="provider-view-service-created-at badge">Paid At 12 Jul </p>
+                            <p className="badge-flex"><p className="badge">User Id : #3243345654</p> <p className="badge">username : Vasanth</p></p>
+                            <p className="badge-flex"><p className="provider-view-service-created-at badge">Location : Thiruvaur</p>
+                            <p className="provider-view-service-orders badge">Orderd At 12 Jul</p></p>
+                            <p className="badge-flex"><p className="provider-view-service-created-at badge">Completed At 15 Jul</p>
                             <p className="provider-view-service-orders badge">Payment Id : #565676890</p></p>
                             <p className="provider-view-service-price badge">
                                 <p>$ 1500</p>

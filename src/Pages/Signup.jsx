@@ -6,7 +6,7 @@ import { useState } from "react"
 import eyeClose from "../assets/eye-close.png"
 import eyeOpen from "../assets/eye-open.png"
 import { useEffect } from "react"
-import  axios from "axios";
+import axios from "axios";
 import { toast } from "react-toastify"
 import { authBase } from "../../url"
 const Signup = () => {
@@ -20,25 +20,32 @@ const Signup = () => {
     const [phoneNumberError, setPhoneNumberError] = useState()
     const [passwordError, setpasswordError] = useState()
     const [isOpened, setIsOpened] = useState(false)
-    const emailFormat = /^[a-z]+\d+@[a-z]+.com$/
-    const getProfile = async() =>{
-        const response = await axios.get(`${authBase}/profile`,{withCredentials:true})
-        response && response.data.success == true && navigate("/")
-    }
-    useEffect(()=>{
-        getProfile()
-    },[])
-    const handleSubmit = async() =>{
-        const isSuccess = () =>{
-            toast.success("Signup successfull",{autoClose:2000})
-            navigate("/login")
+    const getProfile = async () => {
+        try {
+            const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+            response && response.data.success == true && navigate("/")
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
         }
-        const response = await axios.post(`${authBase}/signup`,{userName,email,mobileNumber:phone,password})
-        response && response.data.success == false && (response.data.message == "userName is required" || response.data.message.includes("userName")) ? setUserNameError(response.data.message) : setUserNameError("")
-        response && response.data.success == false && response.data.message.includes("email") ? setEmailError(response.data.message) : setEmailError("")
-        response && response.data.success == false && (response.data.message.includes("number") || response.data.message.includes("mobile"))  ? setPhoneNumberError(response.data.message) : setPhoneNumberError("")
-        response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
-        response && response.data.success == true && response.data.message == "signup successfull" && isSuccess()
+    }
+    useEffect(() => {
+        getProfile()
+    }, [])
+    const handleSubmit = async () => {
+        try {
+            const isSuccess = () => {
+                toast.success("Signup successfull", { autoClose: 2000 })
+                navigate("/login")
+            }
+            const response = await axios.post(`${authBase}/signup`, { userName, email, mobileNumber: phone, password })
+            response && response.data.success == false && (response.data.message == "userName is required" || response.data.message.includes("userName")) ? setUserNameError(response.data.message) : setUserNameError("")
+            response && response.data.success == false && response.data.message.includes("email") ? setEmailError(response.data.message) : setEmailError("")
+            response && response.data.success == false && (response.data.message.includes("number") || response.data.message.includes("mobile")) ? setPhoneNumberError(response.data.message) : setPhoneNumberError("")
+            response && response.data.success == false && response.data.message.includes("password") ? setpasswordError(response.data.message) : setpasswordError("")
+            response && response.data.success == true && response.data.message == "signup successfull" && isSuccess()
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
 
     return (

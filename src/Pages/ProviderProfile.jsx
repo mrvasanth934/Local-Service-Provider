@@ -15,7 +15,8 @@ const ProviderProfile = () => {
     const [showMain, setShowMain] = useState("about-us")
     const [user, setUser] = useState({})
     const getProfile = async () => {
-        const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+        try {
+            const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
         console.log(response);
 
         const isFailed = async () => {
@@ -24,6 +25,9 @@ const ProviderProfile = () => {
         }
         response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
         response && response.data.success == true && response.data.data && setUser(response.data.data)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
     }
     useEffect(() => {
         getProfile()

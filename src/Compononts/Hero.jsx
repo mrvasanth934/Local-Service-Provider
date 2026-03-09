@@ -11,17 +11,25 @@ import axios from "axios"
 import { authBase } from "../../url"
 import { useEffect, useState } from "react"
 import profileIcon from "../assets/icons8-profile-50.png";
+import WhyChooseUs from "./WhyChooseUs"
+import Footer from "./Footer"
 const Hero = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
     const getProfile = async () => {
-        const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
-        const isFailed = async () => {
-            await cookieStore.set("token", "")
-            navigate("/login")
+        try {
+            const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+            console.log(response);
+
+            const isFailed = async () => {
+                await cookieStore.set("token", "")
+                navigate("/login")
+            }
+            response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
+            response && response.data.success == true && response.data.data && setUser(response.data.data)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
         }
-        response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
-        response && response.data.success == true && response.data.data && setUser(response.data.data)
     }
     useEffect(() => {
         getProfile()
@@ -63,11 +71,14 @@ const Hero = () => {
                 </div>
             </div>
             <Category />
-            <Banner />
-            <Popular />
             <Banner2 />
+            <Popular />
+            <Banner />
+            {/* <WhyChooseUs/> */}
             {/* <CtaBox /> */}
+            <Footer/>
         </>
+
     )
 }
 export default Hero

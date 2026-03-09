@@ -13,15 +13,17 @@ const Profile = () => {
     const [showMain, setShowMain] = useState("about-us")
     const [user, setUser] = useState({})
     const getProfile = async () => {
-        const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
-        console.log(response);
-
-        const isFailed = async () => {
-            await cookieStore.set("token", "")
-            navigate("/login")
+        try {
+            const response = await axios.get(`${authBase}/profile`, { withCredentials: true })
+            const isFailed = async () => {
+                await cookieStore.set("token", "")
+                navigate("/login")
+            }
+            response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
+            response && response.data.success == true && response.data.data && setUser(response.data.data)
+        } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
         }
-        response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
-        response && response.data.success == true && response.data.data && setUser(response.data.data)
     }
     useEffect(() => {
         getProfile()
@@ -69,7 +71,7 @@ const Profile = () => {
                     </div>
                     <div className="profile-main">
                         {
-                            showMain == "about-us" && <Profile_about user={user}/>
+                            showMain == "about-us" && <Profile_about user={user} />
                         }
                         {
                             showMain == "update-profile" && <Update_profile />
