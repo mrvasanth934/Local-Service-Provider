@@ -181,15 +181,17 @@
   flex-direction: column;
   gap: 10px;
   width: 70%;
-  height: 100%;
 }
 
 .service-section {
   background: #ffffff;
   border-radius: 12px;
-  padding: 30px;
+  padding: 17px;
   border: 1px solid #e5e7eb;
   height: 100%;
+}
+.service-section-middle{
+  height: 300px;
 }
 
 .section-title {
@@ -202,7 +204,7 @@
 
 .section-content {
   color: #374151;
-  line-height: 1.7;
+  line-height:25px;
   margin: 0;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.503);
@@ -352,6 +354,9 @@
   border: 2px solid #e2e8f0;
   text-align: center;
 }
+.align{
+  text-align: left;
+}
 
 .cta-content h3 {
   font-size: 15px;
@@ -448,6 +453,64 @@
 .ratings-category-details{
   margin-bottom: 20px;
 }
+
+.service-details-error{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 15px;
+  height: 80vh;
+  flex-direction: column;
+}
+.service-details-error h5{
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.meta-item-price{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.date-chooser{
+  border: 2px solid rgba(121, 121, 121, 0.11);
+  padding: 10px;
+  width: 100px;
+  font-size: 10px;
+  border-radius: 3px;
+  margin-top: 0;
+}
+
+.address-edit {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    margin-top: 20px;
+    height: fit-content;
+    gap: 20px;
+    row-gap: 40px;
+    position: relative;
+}
+
+.address-edit-input{
+    width: 36%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.address-edit-input label{
+    font-size: 10px;
+}
+.address-edit-input input, .address-edit-input select{
+    height: 40px;
+    padding-left: 10px;
+    border: 1px solid #00000047;
+    outline:none;
+    border-radius: 3px;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .service-details-page {

@@ -135,7 +135,7 @@ const Service = () => {
                                             </div>
                                         </div>
                                         <hr />
-                                        <div onClick={() => { navigate("service-details") }} className="view-btn pop">
+                                        <div onClick={() => { navigate(`/service-details/${service._id}`) }} className="view-btn pop">
                                             Get Your Service
                                             {/* <div className="arrow"><img src={arrow} alt="" /></div> */}
                                         </div>
@@ -143,7 +143,7 @@ const Service = () => {
                                 })
                             }
                             {
-                                !services && <div className="no-services">
+                                services == true && <div className="no-services">
                                 <h3>Services Not available</h3>
                                 <h6 onClick={()=>{getServices()}}>Try again</h6>
                             </div>
