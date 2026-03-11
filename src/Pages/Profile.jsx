@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "./Css/Profile.css"
 import sampleAd from "../assets/bg.jpg"
 import Profile_about from "../Compononts/Profile_about"
@@ -8,7 +8,10 @@ import Password_security from "../Compononts/Pasword_security"
 import Notifications from "../Compononts/Notifications"
 import axios from "axios"
 import { authBase } from "../../url"
+import ProviderViewOrders from "../Compononts/ProviderViewOrders"
+import UserViewOrders from "../Compononts/UserViewOrders"
 const Profile = () => {
+    const location = useLocation()
     const navigate = useNavigate()
     const [showMain, setShowMain] = useState("about-us")
     const [user, setUser] = useState({})
@@ -27,6 +30,7 @@ const Profile = () => {
     }
     useEffect(() => {
         getProfile()
+        location  && location.state && location.state.tab && location.state.tab == "my-orders" && setShowMain("my-orders")
     }, [])
     return (
         <>
@@ -75,6 +79,9 @@ const Profile = () => {
                         }
                         {
                             showMain == "update-profile" && <Update_profile />
+                        }
+                        {
+                            showMain == "my-orders" && <UserViewOrders/>
                         }
                         {
                             showMain == "password-security" && <Password_security />

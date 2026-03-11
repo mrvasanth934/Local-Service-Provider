@@ -72,7 +72,7 @@
     justify-content: space-between;
 }
 .provider-view-service-name-status h4{
-    font-size: 20px;
+    font-size: 16px;
 }
 .provider-view-service-name-status p{
     color: green;
@@ -81,6 +81,7 @@
     height: fit-content;
     border-radius: 20px;
     font-size: 2px;
+    margin-top: 10px;
 }
 .provider-view-service-name-category p{
     font-size: 2px;

@@ -97,3 +97,22 @@
   font-size: 12px;
   color: #64748b;
 }
+@media (max-width:1181px) {
+  .footer{
+    height: 100%;
+  }
+  .footer-top{
+    flex-direction: column;
+  }
+}
+@media (max-width:768px) {
+  .footer{
+    height: 100%;
+  }
+  .footer-top{
+    flex-direction: column;
+  }
+  .footer-middle ul{
+    flex-direction: column;
+  }
+}

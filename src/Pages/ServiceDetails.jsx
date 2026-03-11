@@ -1,10 +1,11 @@
 import axios from 'axios';
 import './Css/ServiceDetails.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { serviceBase } from '../../url';
+import { data, Link, useLocation, useNavigate } from 'react-router-dom';
+import { orderBase, serviceBase } from '../../url';
 import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from "react-leaflet";
+import { TiLocationArrow } from "react-icons/ti";
+import { toast } from 'react-toastify';
 const ServiceDetails = () => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -12,7 +13,8 @@ const ServiceDetails = () => {
   const serviceId = location.pathname.split('/')[2];
   const [service, setService] = useState()
   const [position, setPosition] = useState([13.0827, 80.2707])
-  const [userLocation, setUserLocation] = useState(null)
+  const [selectedDistrict, setSelectedDistrict] = useState(0)
+  const [distance, setDistance] = useState(20)
   const tamilNaduLocations = [
     {
       district: "Ariyalur",
@@ -167,6 +169,12 @@ const ServiceDetails = () => {
       cities: ["Virudhunagar", "Sivakasi", "Rajapalayam", "Aruppukkottai", "Srivilliputhur"]
     }
   ];
+  const [label, setLabel] = useState()
+  const [district, setDistrict] = useState()
+  const [city, setCity] = useState()
+  const [fullAddress, setFullAddress] = useState()
+  const [pincode, setPincode] = useState()
+  const [date, setDate] = useState()
   const handleGetLocation = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
       const lat = pos.coords.latitude
@@ -174,24 +182,64 @@ const ServiceDetails = () => {
       setPosition([lat, lang])
     })
   }
-  const [selectedDistrict, setSelectedDistrict] = useState(0)
-  const isFailed = () => {
+  const isFailed = async () => {
+    await cookieStore.set("token", "")
     navigate("/login")
   }
   const getService = async () => {
-    const response = await axios.get(`${serviceBase}/service/${serviceId}`, { withCredentials: true })
-    response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
-    response && response.data.success == false && (response.data.message == "inValid serviceId" || response.data.message == "can`t find service" || response.data.message == "error from getServiceById") && setIsError(true)
-    response && response.data.success == true && response.data.message == "service finded" && setService(response.data.data)
-
+    try {
+      const response = await axios.get(`${serviceBase}/service/${serviceId}`, { withCredentials: true })
+      response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
+      response && response.data.success == false && (response.data.message == "inValid serviceId" || response.data.message == "can`t find service" || response.data.message == "error from getServiceById") && setIsError(true)
+      response && response.data.success == true && response.data.message == "service finded" && setService(response.data.data)
+    } catch (error) {
+      error && error.message == "Network Error" && navigate("/server-error-response")
+    }
   }
   useEffect(() => {
     getService()
   }, [])
+
+  const handleOrder = async () => {
+    if (!label) {
+      toast.error("label is required")
+    }
+    else if (!district) {
+      toast.error("select your district")
+    }
+    else if (!city) {
+      toast.error("selct your city")
+    }
+    else if (!fullAddress) {
+      toast.error("full address is required")
+    }
+    else if (!pincode) {
+      toast.error("pincode is required")
+    }
+    else if (!date) {
+      toast.error("select date")
+    }
+    else {
+      const data = [
+        service.provider.userName,
+        service._id,
+        label, fullAddress,
+        city,
+        district,
+        pincode,
+        service.servicePrice,
+        service.serviceName,
+        service.serviceCategory,
+        date,
+        distance,
+        service.provider._id
+      ]
+      navigate('/book', { state: { data } })
+    }
+  }
+
   return (
     <div className="service-details-page">
-      {console.log(service)
-      }
       <div className="container">
         {!isError && service && <div className="service-details">
           {/* service Header */}
@@ -264,17 +312,16 @@ const ServiceDetails = () => {
             </section>
 
             {/* Problem Solved Section */}
-            <section className="service-section service-section-middle">
+            <section className="service-section">
               <h2 className="section-title">Address</h2>
-              <MapContainer center={position} zoom={13} style={{ height: "200px" }}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={position} />
-              </MapContainer>
-              <div onClick={() => { handleGetLocation() }} style={{ padding: "10px 20px", marginTop: "20px", cursor: "pointer" }} className="selectlocation">Select You Location</div>
-              {/* <div className="address-edit">
+              <div className="currentLocation">
+                <TiLocationArrow style={{ marginTop: "-1px" }} fontSize="20px" color='blue' />
+                <div>Use My Current location</div>
+              </div>
+              <div className="address-edit">
                 <div className="address-edit-input">
                   <label htmlFor="FullName">Select Label</label>
-                  <select name="label" id="">
+                  <select onChange={(e) => { setLabel(e.target.value) }} name="label" id="">
                     <option value="home">Home</option>
                     <option value="office">Office</option>
                     <option value="others">Others</option>
@@ -282,8 +329,9 @@ const ServiceDetails = () => {
                 </div>
                 <div className="address-edit-input">
                   <label htmlFor="userName">Select District</label>
-                  <select onClick={(e)=>{
+                  <select onClick={(e) => {
                     setSelectedDistrict(e.target.selectedIndex)
+                    setDistrict(e.target.value)
                   }} name="district" id="">
                     {
                       tamilNaduLocations.map((district) => {
@@ -294,7 +342,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className="address-edit-input">
                   <label htmlFor="userName">City</label>
-                  <select onClick={()=>{}} name="city" id="">
+                  <select onClick={(e) => { setCity(e.target.value) }} name="city" id="">
                     {
                       tamilNaduLocations[selectedDistrict].cities.map((city) => {
                         return <option key={city} value={city}>{city}</option>
@@ -302,36 +350,36 @@ const ServiceDetails = () => {
                     }
                   </select>
                 </div>
-              </div> */}
-              {/* <div className="address-edit">
+              </div>
+              <div className="address-edit">
                 <div className="address-edit-input">
                   <label htmlFor="FullName">State</label>
-                  <input disabled type="text" value={"TamilNadu"} name="" id="" placeholder='Enter Full Addres'/>
+                  <input disabled type="text" value={"TamilNadu"} name="" id="" placeholder='Enter Full Addres' />
                 </div>
                 <div className="address-edit-input">
                   <label htmlFor="FullName">Full Address</label>
-                  <input type="text" name="" id="" placeholder='Enter Full Addres'/>
+                  <input onChange={(e) => { setFullAddress(e.target.value) }} type="text" name="" id="" placeholder='Enter Full Addres' />
                 </div>
                 <div className="address-edit-input">
                   <label htmlFor="userName">Pin Code</label>
-                  <input type="number" name="" id="" placeholder='Pin code'/>
+                  <input onChange={(e) => { setPincode(e.target.value) }} type="number" name="" id="" placeholder='Pin code' />
                 </div>
-              </div> */}
-              {/* <h2 style={{ marginTop: "20px" }} className="section-title">Choose Date</h2>
-              <input style={{ cursor: "pointer" }} type="date" className='date-chooser' /> */}
+              </div>
+            </section>
+            <section className='service-section date-section'>
+              <h2 className='section-title'>Select Date</h2>
+              <div className="address-edit-input">
+                <input type="date" name="" id="" onChange={(e) => {
+                  setDate(e.target.value)
+                }} />
+              </div>
             </section>
             {/* Final CTA */}
             <section className="service-section cta-section">
-              <div className="cta-content">
+              <div onClick={() => { handleOrder() }} className="cta-content">
                 <h3>Ready to Get Service {service.serviceName}?</h3>
-                <p></p>
-                <a
-                  href={"/book"}
-                  className="cta-button"
-                >
-                  Book Your Service Now
-                  <span className="external-icon">↗</span>
-                </a>
+                <div className='cta-button'>Book Your Service Now
+                  <span className="external-icon">↗</span></div>
               </div>
             </section>
           </div>

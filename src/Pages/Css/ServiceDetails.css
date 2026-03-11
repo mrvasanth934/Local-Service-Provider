@@ -9,7 +9,6 @@
 
 .container {
   width: 80%;
-  height: 90%;
 }
 
 .breadcrumb {
@@ -44,7 +43,7 @@
   align-items: center;
   width: 25%;
   height: 90%;
-  padding: 30px;
+  padding: 30px 20px;
 }
 
 .service-main-info {
@@ -186,9 +185,10 @@
 .service-section {
   background: #ffffff;
   border-radius: 12px;
-  padding: 17px;
+  padding: 15px;
   border: 1px solid #e5e7eb;
   height: 100%;
+  position: relative;
 }
 .service-section-middle{
   height: 300px;
@@ -384,10 +384,10 @@
   font-size: 1rem;
 }
 
-.cta-button:hover {
+/* .cta-button:hover {
   border: 1px solid #1d4fd85b;
   background-color: rgba(179, 179, 255, 0.123);
-}
+} */
 
 /* Error Message */
 .error-message {
@@ -510,7 +510,20 @@
     outline:none;
     border-radius: 3px;
 }
-
+.currentLocation{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 5px 10px;
+  border: 1px solid #2563eb;
+  border-radius: 20px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #2563eb;
+}
 /* Mobile Styles */
 @media (max-width: 768px) {
   .service-details-page {

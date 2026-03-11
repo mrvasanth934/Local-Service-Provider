@@ -15,7 +15,6 @@ const Service = () => {
        else{
         setSelctedValues(selectedValues.filter((data)=> data != e.target.value) )
        }
-       console.log(selectedValues.includes("AC & Cooling"));
        
     }
     useEffect(()=>{
@@ -43,7 +42,6 @@ const Service = () => {
             const response = await axios.get(`${serviceBase}/services`, { withCredentials: true })
             response && response.data.success == false && (response.data.message.includes("login") || response.data.message.includes("token") || response.data.message == "can`t find user") && isFailuire()
             response && response.data.success == true && setServices(response.data.data)
-
         } catch (error) {
             error && error.message == "Network Error" && navigate("/server-error-response")
         }
@@ -53,6 +51,8 @@ const Service = () => {
     }, [])
     return (
         <>
+            {services && console.log(services)
+            }
             <div className="services">
                 <div className="services-container">
                     <div className="sidebar">
