@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { serviceBase } from "../../url"
 import { toast } from "react-toastify"
+import Model from "./Model"
 const ProviderViewServices = () => {
     const [serviceCategory, setServiceCategory] = useState()
     const [serviceName, setServiceName] = useState()
@@ -11,6 +12,7 @@ const ProviderViewServices = () => {
     const [experince, setExperience] = useState()
     const [description, setDescription] = useState()
     const [services, setServics] = useState()
+    const [showModel, setShowModel] = useState(false)
     const categories = [
         { category: "AC & Cooling", services: ["AC Repair & Installation"] },
         { category: "Plumbing", services: ["Plumbing Service", "Tap Repair", "Pipe Leakage Fix"] },
@@ -55,9 +57,56 @@ const ProviderViewServices = () => {
     }
     useEffect(() => {
         getProviderServices()
-    },[])
+    }, [])
+    const serviceModel = () => {
+        const [modelTab, setModelTab] = useState("update-service")
+        return (
+            <>
+                <div className="orderModel">
+                    <div className="model-heading">
+                        <h5>Manage Servcie</h5>
+                        <h5 onClick={() => { setShowModel(false) }} className="clse-btn">&times;</h5>
+                    </div>
+                    <hr className="model-heading" />
+                    <div className="order-model-btn-option">
+                        <div onClick={() => { setModelTab("update-service") }} className={modelTab == "update-service" ? "order-model-btn visible" : "order-model-btn"}>Update Service</div>
+                        <div onClick={() => { setModelTab("delete-service") }} className={modelTab == "delete-service" ? "order-model-btn visible" : "order-model-btn"}>Delete service</div>
+                    </div>
+                    {
+                        modelTab == "update-service" && <div>
+                        <h4 className="pay-now-form-heading">Update Experince</h4>
+                        <hr className="model-heading" />
+                        <div className="pay-now-form-card">
+                            <div style={{ width: "100%" }} className="card-number">
+                                <label htmlFor="">Enter Your Curret expericnce</label>
+                                <input type="text" placeholder="Experince" />
+                            </div>
+                        </div>
+                        <div style={{ marginTop: "20px" }} className="order-cancel-btn">Update </div>
+                    </div>
+                    }
+                    {
+                        modelTab == "delete-service" && <div>
+                        <h4 className="pay-now-form-heading">Delete Service</h4>
+                        <hr className="model-heading" />
+                        <div className="pay-now-form-card">
+                            <div style={{ width: "100%" }} className="card-number">
+                                <label htmlFor="">Enter Your Service Name</label>
+                                <input type="text" placeholder="Service Name" />
+                            </div>
+                        </div>
+                        <div style={{ marginTop: "20px" }} className="order-cancel-btn">Delete Service</div>
+                    </div>
+                    }
+                </div>
+            </>
+        )
+    }
     return (
         <>
+        {
+            showModel &&  <Model element={serviceModel} width="79%" />
+        }
             <div className="provider-view-services">
                 <div className="provider-view-services-container">
                     <div className="provider-view-services-navs">
@@ -67,7 +116,7 @@ const ProviderViewServices = () => {
                     {
                         tab == "all" && <div className="provider-view-services-lists">
                             {
-                                services && services.map((service,i) => {
+                                services && services.map((service, i) => {
                                     let date = new Date(service.createdAt).toDateString()
                                     return <div key={i} className="provider-view-service">
                                         <div className="provider-view-service-name-status">
@@ -75,22 +124,20 @@ const ProviderViewServices = () => {
                                                 <h4>{service.serviceName}</h4>
                                                 <div className="provider-view-service-category-verified">
                                                     <p>{service.serviceCategory}</p>
-                                                <p>{service.serviceCategory}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="provider-view-service-desc">
-                                            {service.serviceDescription.slice(0,90)}...
+                                            {service.serviceDescription.slice(0, 90)}...
                                         </div>
                                         <p className="provider-view-service-created-at badge-service">Creted At {`${date.split(" ")[2]} ${date.split(" ")[1]} ${date.split(" ")[3]}`}</p>
                                         <p className="provider-view-service-orders badge-service">no of Orders : {service.totalOrders}</p>
                                         {/* <p className="provider-view-service-orders badge-service">Total Earnings : $</p> */}
                                         <p className="provider-view-service-price badge-service">
-                                            $ { service.servicePrice}
+                                            $ {service.servicePrice}
                                         </p>
-                                        <div className="provider-view-service-btn">
-                                            <div className="provider-view-service-btn-btn delete-btn">Update</div>
-                                            <div className="provider-view-service-btn-btn">Delete</div>
+                                        <div onClick={()=>{setShowModel(true)}} className="provider-view-service-btn">
+                                            <div className="provider-view-service-btn-btn">Manage Service</div>
                                         </div>
                                     </div>
                                 })

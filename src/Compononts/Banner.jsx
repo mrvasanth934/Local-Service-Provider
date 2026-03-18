@@ -4,7 +4,7 @@ import banner1 from "../assets/TechnBrains.jpg"
 const Banner = () => {
     return (
         <div className="service-banner">
-            <div className="banner-container">
+            <div className="banner-container-1">
             <div className="banner-left">
                 <h1 className="banner-title">
                     Need a Service Right Now?
@@ -33,7 +33,7 @@ const Banner = () => {
                     Book a Service
                 </button>
             </div>
-            <div className="banner-right">
+            <div style={{display:"none"}} className="banner-right">
                 <img
                     src={banner1}
                     alt="Technician"

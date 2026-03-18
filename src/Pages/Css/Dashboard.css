@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app-layout {
+    display: flex;
+    background: #f5f6fa;
+}
+
+/* SIDEBAR */
+
+.admin-sidebar {
+    width: 260px;
+    background: white;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.logo-box {
+    background: #6c5ce7;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu li {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #636e72;
+}
+
+.menu li:hover {
+    background: #f1f2ff;
+}
+
+.menu li.active {
+    background: #edeaff;
+    color: #6c5ce7;
+}
+
+/* MAIN */
+
+.main {
+    flex: 1;
+    width: 100%;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 70px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #bababa;
+    width: 30%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin img {
+    border-radius: 50%;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    padding: 30px;
+    width: 100%;
+}
+
+/* CARDS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: #ffe9ec7c;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 0.1px solid rgba(255, 0, 0, 0.179);
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding: 10px 13px;
+    position: relative;
+    flex-direction: column;
+    cursor: pointer;
+}
+.dashboard-card-title{
+    font-size: 10px;
+}
+.dashboard-card-price-count {
+    font-size: 25px;
+}
+
+.dashboard-card-img {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    background-color: #FF406D;
+}
+
+.dashboard-card-img-logo {
+    width: 100%;
+    height: 100%;
+}
+
+.dashboard-todays-activity{
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.activites{
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+.activity{
+    border: 2px solid rgba(211, 208, 208, 0.271);
+    width: 90%;
+    height: 60px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 5px 10px;
+    gap: 10px;
+}
+.activity-img{
+    width: 35px;
+    height: 35px;
+    background-color: #c3c3c33f;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+}
+.activity-head-desc h4{
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.612);
+}
+.activity-head-desc h6{
+    font-size: 8px;
+    color: rgba(0, 0, 0, 0.317);
+}
+
+/* TABLES */
+
+.tables-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.table-card {
+    background: white;
+    padding: 20px;
+    border-radius:5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th,
+td {
+    padding: 10px;
+    text-align: left;   
+    border-bottom: 1px solid #eee;
+}
+.tables-grid th{
+    font-size: 10px;
+}
+
+.name img {
+    border-radius: 50%;
+}
+
+.badge {
+    padding: 2px 10px;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.green {
+    background: #eafaf1;
+    color: #27ae60;
+}
+
+.purple {
+    background: #edeaff;
+    color: #6c5ce7;
+}
+
+.star {
+    color: gold;
+}
+tr:nth-child(2n){
+    background-color: transparent;
+}

@@ -221,3 +221,62 @@
 .make-payment-btn:hover{
     cursor: pointer;
 }
+.payment-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.payment-container p{
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.438);
+}
+.card-number{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 100%;
+}
+.expCvv{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.input-box {
+  padding: 12px;
+  border: 1px solid #adadad;
+  background-color: white;
+  margin-bottom: 15px;
+  border-radius: 2px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row div {
+  flex: 1;
+}
+
+@media (max-width:1024px) {
+    .book-service-container{
+        width: 100%;
+    }
+}
+@media (max-width:800px) {
+    .book-service-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .book-service-container .book-left, .book-service-container .book-right{
+        width: 60%;
+    }
+}
+@media (max-width:500px) {
+    .book-service-container .book-left, .book-service-container .book-right{
+        width: 95%;
+    }
+}

@@ -12,7 +12,6 @@ const ServiceDetails = () => {
   const [isError, setIsError] = useState(false)
   const serviceId = location.pathname.split('/')[2];
   const [service, setService] = useState()
-  const [position, setPosition] = useState([13.0827, 80.2707])
   const [selectedDistrict, setSelectedDistrict] = useState(0)
   const [distance, setDistance] = useState(20)
   const tamilNaduLocations = [
@@ -175,13 +174,6 @@ const ServiceDetails = () => {
   const [fullAddress, setFullAddress] = useState()
   const [pincode, setPincode] = useState()
   const [date, setDate] = useState()
-  const handleGetLocation = () => {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      const lat = pos.coords.latitude
-      const lang = pos.coords.longitude
-      setPosition([lat, lang])
-    })
-  }
   const isFailed = async () => {
     await cookieStore.set("token", "")
     navigate("/login")
@@ -219,11 +211,22 @@ const ServiceDetails = () => {
     else if (!date) {
       toast.error("select date")
     }
+
     else {
+      const address = `${fullAddress} , ${city}`
+      const response = await axios.get(`https://nominatim.openstreetmap.org/search`, {
+        params: {
+          q: address,
+          format: "json"
+        }
+      })
+      const lat = response.data[0]?.lat;
+      const lon = response.data[0]?.lon;
       const data = [
         service.provider.userName,
         service._id,
-        label, fullAddress,
+        label,
+        fullAddress,
         city,
         district,
         pincode,
@@ -232,7 +235,9 @@ const ServiceDetails = () => {
         service.serviceCategory,
         date,
         distance,
-        service.provider._id
+        service.provider._id,
+        lat,
+        lon
       ]
       navigate('/book', { state: { data } })
     }
@@ -357,7 +362,7 @@ const ServiceDetails = () => {
                   <input disabled type="text" value={"TamilNadu"} name="" id="" placeholder='Enter Full Addres' />
                 </div>
                 <div className="address-edit-input">
-                  <label htmlFor="FullName">Full Address</label>
+                  <label htmlFor="FullName">Area</label>
                   <input onChange={(e) => { setFullAddress(e.target.value) }} type="text" name="" id="" placeholder='Enter Full Addres' />
                 </div>
                 <div className="address-edit-input">

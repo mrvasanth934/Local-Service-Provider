@@ -1,4 +1,4 @@
-// import "./Css/Login.css"
+import "./Css/Login.css"
 import loginImg from "../assets/login (2).jpg"
 import googleIcon from "../assets/google-icon.png"
 import { Link, useNavigate } from "react-router-dom"
@@ -67,6 +67,7 @@ const Login = () => {
                                         <div onClick={() => { setIsOpened(!isOpened) }} className="passwordshow"><img src={isOpened ? eyeOpen : eyeClose} alt="" /></div>
                                     </div>
                                     {passwordError ? <p className="error">{passwordError}</p> : <p className="error-clear">No error</p>}
+                                    <p onClick={()=>{navigate("/forget-password")}} className="fp">Forget Password</p>
                                 </div>
                             </form>
                             <div onClick={() => { handleLogin() }} className="submit-button">

@@ -53,9 +53,9 @@
 
 
 .provider-view-service{
-    width: 320px;
+    width: 340px;
     padding-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.818);
+    background-color: rgba(255, 255, 255, 0.38);
     border-radius: 10px;
     border-bottom-right-radius: 0;
     display: flex;
@@ -190,6 +190,7 @@
     outline:none;
     border-radius: 3px;
     border: 1px solid rgba(0, 0, 0, 0.449);
+    width: 100%;
 }
 .provider-view-create-service-btn{
     height: 40px;
@@ -228,12 +229,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:2.5px 0px;
+    padding:7px 0px;
     border-radius: 5px;
     font-size: 12px;
     border: 1px solid whitesmoke;
     cursor: pointer;
     box-shadow: 0.2px 0.2px 2px rgba(0, 0, 0, 0.099);
+    background-color: #2563eb;
+    color: white;
 }
 /* .delete-btn{
     background-color: rgba(0, 0, 255, 0.174);
@@ -241,3 +244,126 @@
     border: 1px solid blue;
     color: blue; */
 /* } */
+.orderModel{
+    width: 90%;
+}
+.model-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.clse-btn{
+    font-size: 20px;
+    cursor: pointer;
+}
+.order-model-btn-option{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(169, 169, 169, 0.436);
+    border-radius: 5px;
+}
+
+.order-model-btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.visible{
+    background-color: #2563eb;
+    color: white;
+}
+
+.order-cancel-form{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+.order-cancel-option{
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.436);
+    padding: 10px;
+    border-radius: 2px;
+}
+.order-cancel-message{
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+}
+.order-cancel-btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    height: 40px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.pay-now-form{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pay-now-form-heading{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pay-now-form-card{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.pay-now-form-card div{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.pay-now-form-card div input{
+    width: 100%;
+}
+.pay-now-form-card input[className = ".card-number"]{
+    /* width: 70%; */
+}
+.pay-now-form-card label{
+    font-size: 8px;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.355);
+}
+.pay-now-form-method{
+    margin-top: 10px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.pay-now-form-card input:focus{
+    outline: 1px solid black;
+    border-radius: 2px;
+}
+
+@media (max-width:1250px) {
+    .provider-view-services{
+        width: 90%;
+    }
+}

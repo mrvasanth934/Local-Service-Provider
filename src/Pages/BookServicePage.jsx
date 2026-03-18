@@ -5,15 +5,21 @@ import payment3 from "../assets/payment_option (1).png"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { orderBase } from "../../url"
+import { orderBase, paymentBase } from "../../url"
 import { toast } from "react-toastify"
+import { CardElement, CardExpiryElement, CardNumberElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js"
+import { CardCvcElement } from "@stripe/react-stripe-js"
+import { haversineDistance } from "haversine-distance-in-kms";
 const BookServicePage = () => {
+    const stripe = useStripe();
+    const elements = useElements()
     const location = useLocation()
     const [data, setData] = useState()
     const navigate = useNavigate()
     const [paymentMethod, setPaymentMethod] = useState("COD")
     useEffect(() => {
         location && location.state && location.state.data && setData(location.state.data)
+
     }, [])
     const isFailed = async () => {
         await cookieStore.set("token", "")
@@ -23,12 +29,9 @@ const BookServicePage = () => {
         toast.success("Order successfull")
         navigate('/profile', { state: { tab: "my-orders" } })
     }
-    const orderNow = async () => {
+    const orderNow = async (paymentStatus = null,paidAt = null, transactionId = null) => {
         try {
-            console.log(data[10]);
-            
-            const date = new Date(data[10])
-            
+            const distance = Math.random(haversineDistance(data[13],data[14],10.85615226862709, 79.4809029119017))
             const response = await axios.post(`${orderBase}/create`, {
                 provider: data[12],
                 service: data[1],
@@ -39,13 +42,69 @@ const BookServicePage = () => {
                 pincode: data[6],
                 servicePrice: data[7],
                 paymentMethod,
-                distance: data[11],
-                orderedDate:new Date(data[10])
+                distance,
+                orderedDate: new Date(data[10]),
+                paymentStatus,
+                paidAt,
+                transactionId,
+                lat,
+                lng
             }, { withCredentials: true })
             response && response.data.success == false && (response.data.message == "continue with login" || response.data.message == "unAuthorized token" || response.data.message == "can`t find user" || response.data.message == "error from get profile") && isFailed()
             response && response.data.success == true && response.data.message == "order successfull" & orderSuccess()
             console.log(response);
         } catch (error) {
+            error && error.message == "Network Error" && navigate("/server-error-response")
+        }
+    }
+    const payViaCard = async () => {
+        try {
+            const amount = data && Number(data[11]) * 3 + data[7]
+            const response = await axios.post(`${paymentBase}/create-payment-intent`, { amount })
+            const client_secret = response && response.data.success && response.data.data && response.data.data.clientSecret
+            if (client_secret) {
+                const result = await stripe.confirmCardPayment(client_secret, {
+                    payment_method: {
+                        card: elements.getElement(CardNumberElement)
+                    }
+                })
+                const transactionId = result && result.paymentIntent && result.paymentIntent.id
+                console.log(result);
+                if (result && result.paymentIntent) {
+                    result.paymentIntent.status == "succeeded" && orderNow("success",Date.now(),transactionId)
+                    result.paymentIntent.status == "processing" && toast.info("Payment is processing...");
+                    result.paymentIntent.status == "requires_payment_method" && toast.error("Payment failed. Try another card.");
+                    result.paymentIntent.status == "requires_action" && toast.warning("Additional authentication required");
+                    result.paymentIntent.status == "canceled" && toast.error("Payment cancelled");
+                }
+                
+                else if (result.error.message == "Your card number is incomplete.") {
+                    toast.error("Please Enter Your Card Number")
+                }
+                else if(result.error.message == "Your card’s expiration date is incomplete."){
+                    toast.error("Enter a Card Expire date")
+                }
+                else if (result.error.message == "Your card’s expiration year is in the past.") {
+                    toast.error("Enter a valid Card Expire date")
+                }
+                else if (result.error.message == "Your card’s security code is incomplete.") {
+                    toast.error("Enter your CVV Number")
+                }
+                else if (result.error.message == "Your postal code is incomplete.") {
+                    toast.error("Enter Postal code")
+                }
+                else if (result.error.message.includes("card was declined")) {
+                    toast.error("Card declined ❌");
+                }
+                else if (result.error.message.includes("insufficient funds")) {
+                    toast.error("Insufficient balance 💰");
+                }
+            }
+            else {
+                toast.error("can`t get client secret")
+            }
+        } catch (error) {
+            console.log(error);
             error && error.message == "Network Error" && navigate("/server-error-response")
         }
     }
@@ -106,6 +165,7 @@ const BookServicePage = () => {
 
     return (
         <>
+            {console.log(data)}
             <div className="book-service">
                 <div className="book-service-container">
                     <div className="book-left">
@@ -186,23 +246,37 @@ const BookServicePage = () => {
                                     </div>
                                 </div>
                             }
+
                             {
                                 paymentMethod == "CARD" && <div className="card">
                                     <h3>Card Details</h3>
-                                    <div className="card-info">
-                                        <label htmlFor="">Enter Your Card Number</label>
-                                        <div className="card-inp"><input type="text" placeholder="1234 4567 7891 2345" /></div>
+                                    {/* <CardElement /> */}
+                                    <div className="payment-container">
+                                        <div className="card-number">
+                                            <p>Card Number</p>
+                                            <div className="input-box">
+                                                <CardNumberElement />
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="expCvv">
+                                                <p>Expiry date</p>
+                                                <div className="input-box">
+                                                    <CardExpiryElement />
+                                                </div>
+                                            </div>
+
+                                            <div className="expCvv">
+                                                <p>CVV</p>
+                                                <div className="input-box">
+                                                    <CardCvcElement />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="card-info">
-                                        <label htmlFor="">Enter Expiration Date</label>
-                                        <div className="card-inp"><input type="text" placeholder="10 / 26" /></div>
-                                    </div>
-                                    <div className="card-info">
-                                        <label htmlFor="">Enter CVV Number</label>
-                                        <div className="card-inp"><input type="text" placeholder="567" /></div>
-                                    </div>
-                                    <div className="make-payment-btn">
-                                        Make Payment Now
+                                    <div onClick={() => { payViaCard() }} className="make-payment-btn">
+                                        Pay Now  &nbsp; Rs.{data && Number(data[11]) * 3 + data[7]}
                                     </div>
                                 </div>
                             }

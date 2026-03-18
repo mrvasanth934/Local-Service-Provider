@@ -4,13 +4,14 @@
     justify-content: center;
     width: 100%;
 }
-.banner-container {
+.banner-container-1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 80%;
-    padding: 10px 5%;
     border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .banner-left {
@@ -59,7 +60,7 @@
     transition: all 0.3s ease;
 }
 .banner-right {
-    display: flex;
+    display: none;
     justify-content: center;
 }
 .banner-right img {
@@ -76,6 +77,12 @@
     .banner-title {
         font-size: 28px;
     }
+    .service-banner{
+        width: 86%;
+    }
+    .banner-container{
+        width: 100%;
+    }
 
 }
 
@@ -87,6 +94,10 @@
     .service-banner {
         flex-direction: column;
         text-align: center;
+        width: 86%;
+    }
+    .banner-container{
+        width: 100%;
     }
 
     .banner-right {

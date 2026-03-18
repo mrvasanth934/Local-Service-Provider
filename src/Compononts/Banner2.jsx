@@ -29,9 +29,9 @@ const Banner2 = () => {
                         <span>Daliy payments</span>
                     </div>
                 </div>
-                <button className="banner-btn banner2-btn">
+                <div className="banner-btn banner2-btn">
                     Become a provider
-                </button>
+                </div>
             </div>
             {/* <div className="banner-right">
                 <img

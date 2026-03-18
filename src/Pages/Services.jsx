@@ -116,7 +116,7 @@ const Service = () => {
                                                 </div>
                                             </div>
                                             <div className="pr-status">
-                                                <h3 className="top-rated">4.5 Ratings</h3>
+                                                <h6 className="top-rated">4.5 Ratings</h6>
                                                 {/* <h3>24/7 Available</h3> */}
                                             </div>
                                         </div>
@@ -131,7 +131,6 @@ const Service = () => {
                                             <div className="service-list">
                                                 <h3>COD available</h3>
                                                 <h3>100+ Customers</h3>
-                                                <h3>+2 More</h3>
                                             </div>
                                         </div>
                                         <hr />

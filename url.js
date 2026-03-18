@@ -11,3 +11,5 @@ export const serviceBase = `${base}/service`
 export const providerBase = `${base}/provider`
 
 export const orderBase = `${base}/orders`
+
+export const paymentBase = `${base}/payment`

@@ -52,7 +52,7 @@ const Admin = () => {
                                     <div onClick={() => { setShowMain("about-us") }} className={`${showMain == "about-us" ? "nav-link visible-link" : "nav-link"}`}>
                                         <h5>About Us</h5>
                                     </div>
-                                    <div onClick={() => { setShowMain("manage") }} className={`${showMain == "manage" ? "nav-link visible-link" : "nav-link"}`}>
+                                    <div onClick={() => {navigate('/admin/dashboard') }} className={`${showMain == "manage" ? "nav-link visible-link" : "nav-link"}`}>
                                         <h5>Manage</h5>
                                     </div>
                                     <div onClick={() => { setShowMain("notifications") }} className={`${showMain == "notifications" ? "nav-link visible-link" : "nav-link"}`}>
@@ -83,9 +83,6 @@ const Admin = () => {
                         }
                         {
                             showMain == "notifications" && <Notifications />
-                        }
-                        {
-                            showMain == "manage" && <AdminManagement />
                         }
                         <div className="ad-centre">
                             <div className="ad-cetre-container">

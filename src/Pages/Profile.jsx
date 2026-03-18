@@ -8,7 +8,6 @@ import Password_security from "../Compononts/Pasword_security"
 import Notifications from "../Compononts/Notifications"
 import axios from "axios"
 import { authBase } from "../../url"
-import ProviderViewOrders from "../Compononts/ProviderViewOrders"
 import UserViewOrders from "../Compononts/UserViewOrders"
 const Profile = () => {
     const location = useLocation()

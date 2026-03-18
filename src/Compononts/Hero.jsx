@@ -63,7 +63,7 @@ const Hero = () => {
                     <div className="hero-content">
                         <h1>Find Home Service <br /> Experts Near You</h1>
                         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quibusdam, consequatur </h4>
-                        <div className="view-service-btn">View Services</div>
+                        <div onClick={() => { navigate("/service") }} className="view-service-btn">View Services</div>
                     </div>
                     <div className="bg">
                         <img src={herobgimg} alt="" />
